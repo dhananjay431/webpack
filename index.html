@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/bundle.js"></script>
+    <script>
+        function p(data) {
+            return fetch('https://jsonplaceholder.typicode.com/photos')
+                .then(response => response.json())
+        }
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => {
+                console.log("sjon=>", json);
+                console.log($.db(json).val());
+                console.log($.db(json).mapAdd({
+                    zzzzzzz: 45
+                }).val());
+                console.log($.db(json).tuple("id", "show").val());
+
+            })
+
+
+        function p(data) {
+            return fetch('https://jsonplaceholder.typicode.com/photos')
+                .then(response => response.json())
+        }
+        var arr = [];
+        for (var i = 0; i < 5; i++) {
+            arr.push(p(4));
+        }
+
+        function add(d) {
+            if (d == 10) {
+                console.log(d);
+            } else {
+                d++;
+
+                $.db(p(234)).async().then(function(resp) {
+                    console.log("sync =>", resp);
+                    add(d);
+                }, function(err) {
+                    console.log("err=>", err);
+                })
+            }
+        }
+        add(0);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
