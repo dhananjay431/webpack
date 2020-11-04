@@ -40,7 +40,7 @@
             } else {
                 d++;
 
-                $.db(p(234)).async().then(function(resp) {
+                $.db(p(234)).async().val().then(function(resp) {
                     console.log("sync =>", resp);
                     add(d);
                 }, function(err) {
